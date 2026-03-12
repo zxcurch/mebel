@@ -1,271 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Интерьер — Всё, чего заслуживает ваш дом</title>
-    <!-- Google Fonts: Raleway (заголовки/лого) + Roboto (текст) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Базовые сбросы */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Интерьер — Всё, чего заслуживает ваш дом</title>
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #fff;
-            color: #1a1a1a;
-        }
+  <!-- Google Fonts: Raleway (заголовки/лого) + Roboto (текст) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
 
-        /* Класс для центрирования контента (используем .center, как в задании) */
-        .center {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            width: 100%;
-        }
 
-        /* Шапка */
-        header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-        }
-
-        header .center {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 40px; /* подстрой под размер логотипа */
-            width: auto;
-            display: block;
-        }
-
-        nav {
-            display: flex;
-            gap: 28px;
-        }
-
-        nav a {
-            font-family: 'Raleway', sans-serif;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hero секция */
-        .hero {
-            position: relative;
-            height: 600px; /* можно изменить под макет */
-            background-image: url('images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.1) 65%, transparent 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding-bottom: 56px;
-            width: 100%;
-        }
-
-        .hero-content .center {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero h1 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.2;
-            max-width: 420px;
-            margin-bottom: 8px;
-        }
-
-        .hero-subtitle {
-            font-size: 14px;
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 12px;
-        }
-
-        .hero-link {
-            font-size: 13px;
-            color: rgba(255,255,255,0.75);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .hero-link:hover {
-            color: #fff;
-        }
-
-        /* Каталог товаров */
-        .catalog {
-            padding: 44px 0 56px;
-        }
-
-        .catalog h2 {
-            font-family: 'Raleway', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #1a1a1a;
-        }
-
-        .products-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .product-card {
-            flex: 1 1 calc(33.333% - 14px);
-            min-width: 180px;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 175px;
-            object-fit: cover;
-            display: block;
-            background: linear-gradient(135deg, #d8d0c8, #c4b49a);
-        }
-
-        .product-card h3 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 10px;
-            margin-bottom: 6px;
-            color: #1a1a1a;
-        }
-
-        .product-card p {
-            font-size: 12px;
-            color: #777;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .product-card .price {
-            font-size: 14px;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        /* Футер */
-        footer {
-            background-color: #f5f5f5;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <section class="hero">
-        <header>
-            <div class="center">
-                <!-- Логотип-картинка: замените src на путь к вашему файлу логотипа -->
-                <a href="#" class="logo">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 40'%3E%3Ctext x='0' y='30' font-family='Raleway' font-size='28' font-weight='700' fill='white'%3EИнтерьер.%3C/text%3E%3C/svg%3E" alt="Интерьер">
-                </a>
-                <nav>
-                    <a href="#catalog">Каталог</a>
-                    <a href="#">Корзина</a>
-                </nav>
-            </div>
-        </header>
-        <div class="hero-content">
-            <div class="center">
-                <h1>Всё, чего заслуживает ваш дом</h1>
-                <p class="hero-subtitle">Наша мебель — ваше отражение</p>
-                <a href="#catalog" class="hero-link">Перейти в каталог</a>
-            </div>
-        </div>
-    </section>
 
-    <section class="catalog" id="catalog">
-        <div class="center">
-            <h2>Каталог товаров</h2>
-            <div class="products-grid">
-                <!-- Карточка 1 -->
-                <div class="product-card">
-                    <img src="images/bed-tatran.jpg" alt="Кровать TATRAN">
-                    <h3>Кровать TATRAN</h3>
-                    <p>Основание из полированной нержавеющей стали, придаёт оригинальный парящий эффект.</p>
-                    <span class="price">120 000 руб.</span>
-                </div>
-                <!-- Карточка 2 -->
-                <div class="product-card">
-                    <img src="images/chair-vilora.jpg" alt="Кресло VILORA">
-                    <h3>Кресло VILORA</h3>
-                    <p>Мягкое и уютное, аккуратное и стильное. Упругие подушки сиденья приятны на ощупь.</p>
-                    <span class="price">21 000 руб.</span>
-                </div>
-                <!-- Карточка 3 -->
-                <div class="product-card">
-                    <img src="images/table-menu.jpg" alt="Стол MENU">
-                    <h3>Стол MENU</h3>
-                    <p>Для того чтобы трапезничать было приятно, необходим правильный обеденный стол.</p>
-                    <span class="price">34 000 руб.</span>
-                </div>
-                <!-- Карточка 4 -->
-                <div class="product-card">
-                    <img src="images/chair-askesta.jpg" alt="Кресло ASKESTA">
-                    <h3>Кресло ASKESTA</h3>
-                    <p>Высокоэластичный пенополиуретан в «начинке» кресла надёжен и долговечен.</p>
-                    <span class="price">68 000 руб.</span>
-                </div>
-                <!-- Карточка 5 -->
-                <div class="product-card">
-                    <img src="images/table-norman.jpg" alt="Стол NORMAN">
-                    <h3>Стол NORMAN</h3>
-                    <p>Прекрасно переносит солнечные лучи, перепады влажности и любые осадки.</p>
-                    <span class="price">40 000 руб.</span>
-                </div>
-                <!-- Карточка 6 -->
-                <div class="product-card">
-                    <img src="images/sofa-nastan.jpg" alt="Диван NASTAN">
-                    <h3>Диван NASTAN</h3>
-                    <p>Модель отличается простотой линий и форм, отсутствием броского декора.</p>
-                    <span class="price">80 000 руб.</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>Сайт был сверстан Вадимом</p> <!-- Не забудь заменить на своё имя -->
-    </footer>
+  <section class="hero">
+
+
+    <header>
+      <div class="center">
+        <a href="#" class="logo">Интерьер.</a>
+        <nav>
+          <a href="#catalog">Каталог</a>
+          <a href="#">Корзина</a>
+        </nav>
+      </div>
+    </header>
+
+
+    <div class="hero-content">
+      <div class="center">
+        <h1>Всё, чего заслуживает ваш дом</h1>
+        <p class="hero-subtitle">Наша мебель — ваше отражение</p>
+        <a href="#catalog" class="hero-link">Перейти в каталог</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="catalog" id="catalog">
+    <div class="center">
+      <h2>Каталог товаров</h2>
+
+      <div class="products-grid">
+
+
+        <div class="product-card">
+          <img src="images/bed-tatran.jpg" alt="Кровать TATRAN" />
+          <h3>Кровать TATRAN</h3>
+          <p>Основание из полированной нержавеющей стали, придаёт оригинальный парящий эффект.</p>
+          <span class="price">120 000 руб.</span>
+        </div>
+
+
+        <div class="product-card">
+          <img src="images/chair-vilora.jpg" alt="Кресло VILORA" />
+          <h3>Кресло VILORA</h3>
+          <p>Мягкое и уютное, аккуратное и стильное. Упругие подушки сиденья приятны на ощупь ткань.</p>
+          <span class="price">21 000 руб.</span>
+        </div>
+
+
+        <div class="product-card">
+          <img src="images/table-menu.jpg" alt="Стол MENU" />
+          <h3>Стол MENU</h3>
+          <p>Для того чтобы трапезничать было приятно, необходим правильный обеденный стол.</p>
+          <span class="price">34 000 руб.</span>
+        </div>
+
+
+        <div class="product-card">
+          <img src="images/chair-askesta.jpg" alt="Кресло ASKESTA" />
+          <h3>Кресло ASKESTA</h3>
+          <p>Высокоэластичный пенополиуретан в «начинке» кресла надёжен и долговечен.</p>
+          <span class="price">68 000 руб.</span>
+        </div>
+
+
+        <div class="product-card">
+          <img src="images/table-norman.jpg" alt="Стол NORMAN" />
+          <h3>Стол NORMAN</h3>
+          <p>Прекрасно переносит солнечные лучи, перепады влажности и любые осадки.</p>
+          <span class="price">40 000 руб.</span>
+        </div>
+
+  
+        <div class="product-card">
+          <img src="images/sofa-nastan.jpg" alt="Диван NASTAN" />
+          <h3>Диван NASTAN</h3>
+          <p>Модель отличается простотой линий и форм, отсутствием броского декора.</p>
+          <span class="price">80 000 руб.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>Сайт был сверстан вадимом</p>
+  </footer>
+
 </body>
 </html>
