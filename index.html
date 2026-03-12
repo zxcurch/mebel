@@ -4,13 +4,314 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>INTERIOR — мебель для дома</title>
-
-  <!-- Google Fonts: Montserrat + Open Sans -->
+  <!-- Google Fonts: Montserrat (заголовки) + Open Sans (текст) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Базовые сбросы */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #ffffff;
+      color: #2d2d2d;
+      line-height: 1.5;
+    }
+
+    /* Центрирующий контейнер */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    /* Типографика */
+    h1, h2, h3, h4, .logo, .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #1f1f1f;
+    }
+
+    /* Шапка */
+    .main-header {
+      background-color: #1f1f1f;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .main-header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-size: 24px;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .main-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .main-nav a:hover {
+      opacity: 0.8;
+    }
+
+    /* Hero — увеличен */
+    .hero {
+      background-image: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 70%), url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+    }
+
+    .hero .container {
+      text-align: center;
+    }
+
+    .hero__title {
+      font-size: 56px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero__subtitle {
+      font-size: 18px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      border: 2px solid #b85c38;
+      color: #b85c38;
+      padding: 12px 32px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 40px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn--primary {
+      background-color: #b85c38;
+      color: #ffffff;
+      border-color: #b85c38;
+    }
+
+    .btn--primary:hover {
+      background-color: #9f4b2e;
+      border-color: #9f4b2e;
+    }
+
+    .btn--small {
+      padding: 8px 20px;
+      font-size: 14px;
+      border-width: 1px;
+    }
+
+    /* Преимущества */
+    .features {
+      padding: 80px 0;
+      background-color: #f9f9f9;
+    }
+
+    .features__grid {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .feature-item {
+      flex: 1 1 280px;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .feature-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .feature-item p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Каталог */
+    .catalog {
+      padding: 80px 0;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-card__content {
+      padding: 20px;
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .product-card p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: #b85c38;
+      margin-bottom: 16px;
+    }
+
+    /* Футер */
+    .main-footer {
+      background-color: #1f1f1f;
+      color: #aaaaaa;
+      padding: 60px 0 20px;
+    }
+
+    .footer__cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer__col h4 {
+      color: #ffffff;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .footer__col ul {
+      list-style: none;
+    }
+
+    .footer__col li {
+      margin-bottom: 8px;
+    }
+
+    .footer__col a {
+      color: #aaaaaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer__col a:hover {
+      color: #ffffff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-links a {
+      font-size: 24px;
+      color: #aaaaaa;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #b85c38;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      font-size: 14px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .hero__title {
+        font-size: 32px;
+      }
+      .hero__subtitle {
+        font-size: 16px;
+      }
+      .hero {
+        min-height: 500px;
+      }
+      .features__grid {
+        gap: 20px;
+      }
+      .footer__cols {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .social-links {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +328,7 @@
 
   <!-- Hero (увеличен) -->
   <section class="hero">
-    <div class="container hero__inner">
+    <div class="container">
       <h1 class="hero__title">Всё, чего заслуживает ваш дом</h1>
       <p class="hero__subtitle">Мебель с характером — для тех, кто ценит комфорт и стиль</p>
       <a href="#catalog" class="btn btn--primary">Смотреть каталог</a>
@@ -58,7 +359,7 @@
     </div>
   </section>
 
-  <!-- Каталог -->
+  <!-- Каталог товаров -->
   <section class="catalog" id="catalog">
     <div class="container">
       <h2 class="section-title">Каталог товаров</h2>
