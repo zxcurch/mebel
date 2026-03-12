@@ -1,6 +1,4 @@
-/* ==========================================================================
-   ОБЩИЕ СТИЛИ И СБРОС (НОВЫЙ ВАРИАНТ)
-   ========================================================================== */
+/* --- Сброс стилей --- */
 * {
   margin: 0;
   padding: 0;
@@ -8,218 +6,136 @@
 }
 
 body {
-  /* Заменяем Roboto на Montserrat для более современного вида */
-  font-family: 'Montserrat', 'Roboto', sans-serif;
-  background-color: #fff;
-  color: #1a1a1a;
-  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+  color: #000;
+  line-height: 1.4;
 }
 
-/* Изменим максимальную ширину контейнера, сделаем его просторнее */
+/* Выравнивание по центру (Задание 5) */
 .center {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px; /* Добавим боковые отступы */
+  padding: 0 20px;
 }
 
-/* ==========================================================================
-   HEADER (ФИКСИРОВАННЫЙ, ПРЕМИАЛЬНЫЙ)
-   ========================================================================== */
+/* --- HEADER (Задание 1) --- */
 header {
-  position: fixed; /* Закрепим его сверху */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  padding: 30px 0; /* Увеличим отступы */
-  background-color: #fff; /* Сделаем его белым */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Легкая тень */
+  padding-top: 30px;
 }
 
-header .center {
+.header-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Линия как на макете */
+  padding-bottom: 16px;
 }
 
 .logo {
   font-family: 'Raleway', sans-serif;
-  font-size: 26px; /* Больше логотип */
+  font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a; /* Цвет стал темным */
+  color: #fff;
   text-decoration: none;
-  letter-spacing: 0.5px;
-}
-
-nav {
-  display: flex;
-  gap: 40px; /* Просторнее меню */
 }
 
 nav a {
-  font-family: 'Raleway', sans-serif;
-  color: #1a1a1a; /* Цвет темный */
+  color: #fff;
   text-decoration: none;
-  font-size: 16px; /* Текст крупнее */
-  font-weight: 600; /* Жирнее */
-  position: relative; /* Для эффекта подчеркивания */
+  margin-left: 32px;
+  font-size: 16px;
 }
 
-/* Эффект плавного подчеркивания при наведении */
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #9aaa97; /* Твой старый цвет для акцента */
-  transition: width 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* ==========================================================================
-   HERO (КРУПНЕЕ, МИНИМАЛИСТИЧНЕЕ)
-   ========================================================================== */
+/* --- HERO SECTION (Задание 2) --- */
 .hero {
-  position: relative;
-  min-height: 100vh; /* На весь экран */
-  /* НОВАЯ, БОЛЕЕ ЧИСТАЯ КАРТИНКА - замени ее на свою или я пришлю */
-  background-image: url('https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=2070&auto=format&fit=crop');
+  /* Замени images/hero-bg.jpg на путь к своей большой картинке */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
-  background-color: #1a1a1a;
-  display: flex;
-  align-items: center; /* Текст по центру экрана */
-  margin-top: 100px; /* Отступ под фиксированный хедер */
-}
-
-/* Убираем старый градиент, делаем более чистую подложку */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* Просто темный фон */
+  min-height: 735px;
+  color: #fff;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  text-align: center; /* Всё по центру */
+  padding-top: 64px;
 }
 
 .hero h1 {
   font-family: 'Raleway', sans-serif;
-  font-size: 64px; /* НАМНОГО КРУПНЕЕ */
+  font-size: 64px;
+  line-height: 1.2;
   font-weight: 700;
-  color: #fff;
-  line-height: 1.1;
-  max-width: 800px; /* Чтобы не растягивался на весь экран */
-  margin: 0 auto 20px;
+  max-width: 780px;
+  margin-bottom: 16px;
 }
 
 .hero-subtitle {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px; /* Крупнее */
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 40px;
-  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
-/* Переделаем ссылку в полноценную кнопку */
 .hero-link {
-  display: inline-block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
   color: #fff;
-  text-decoration: none;
-  padding: 16px 40px;
-  border: 2px solid #fff;
-  transition: all 0.3s;
+  font-size: 16px;
+  text-decoration: underline;
 }
 
-.hero-link:hover {
-  background-color: #fff;
-  color: #1a1a1a;
-}
-
-/* ==========================================================================
-   CATALOG (ОГРОМНАЯ ГРИД-СЕТКА ПО 2 ТОВАРА)
-   ========================================================================== */
+/* --- CATALOG (Задание 3) --- */
 .catalog {
-  padding: 100px 0; /* Больше отступы */
+  padding: 64px 0;
 }
 
 .catalog h2 {
   font-family: 'Raleway', sans-serif;
-  font-size: 40px; /* Крупнее заголовок */
+  font-size: 48px;
   font-weight: 700;
-  margin-bottom: 60px; /* Больше отступ */
-  text-align: center;
-  color: #1a1a1a;
+  margin-bottom: 32px;
 }
 
-/* ПОЛНОСТЬЮ НОВАЯ СЕТКА: 2 ТОВАРА В РЯД, ОГРОМНЫЕ ФОТО */
+/* Сетка товаров через Flexbox или Grid (Grid здесь лучше подходит под макет) */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 колонки */
-  gap: 80px 60px; /* Огромные отступы */
+  grid-template-columns: repeat(3, 1fr); /* 3 колонки как в макете */
+  gap: 48px 32px;
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрируем всё */
-  text-align: center;
 }
 
 .product-card img {
   width: 100%;
-  height: auto; /* Убираем фиксированную высоту, фото на весь блок */
-  aspect-ratio: 1 / 1; /* Сделаем их квадратными, это стильно */
-  object-fit: cover;
-  display: block;
-  background: #f5f5f5; /* Светлый фон вместо градиента */
-  margin-bottom: 24px;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 .product-card h3 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px; /* Крупнее */
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
   margin-bottom: 8px;
-  color: #1a1a1a;
 }
 
 .product-card p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #777;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  max-width: 320px; /* Ограничим ширину текста */
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 12px;
 }
 
-/* Добавим акцентный цвет для цены */
 .product-card .price {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #9aaa97; /* Акцентный цвет */
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: auto; /* Прижимает цену к низу, если текст разный по высоте */
 }
 
-/* ==========================================================================
-   FOOTER (МИНИМАЛИСТИЧНЫЙ)
-   ========================================================================== */
+/* --- FOOTER (Задание 4) --- */
 footer {
-  background-color: #1a1a1a; /* Сделаем его темным */
-  color: rgba(255, 255, 255, 0.8);
-  padding: 60px 0;
+  background-color: #f7f7f7;
+  padding: 64px 0;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+}
+
+footer p {
+  font-size: 16px;
+  color: #000;
 }
