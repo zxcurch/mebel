@@ -1,4 +1,6 @@
-/* Базовые сбросы */
+/* ==========================================================================
+   ОБЩИЕ СТИЛИ И СБРОС (НОВЫЙ ВАРИАНТ)
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,298 +8,218 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #ffffff;
-  color: #2d2d2d;
-  line-height: 1.5;
+  /* Заменяем Roboto на Montserrat для более современного вида */
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  background-color: #fff;
+  color: #1a1a1a;
+  line-height: 1.6;
 }
 
-/* Центрирующий контейнер — ядро вёрстки */
-.container {
+/* Изменим максимальную ширину контейнера, сделаем его просторнее */
+.center {
   max-width: 1200px;
-  margin: 0 auto;  /* это центрирует блок по горизонтали */
-  padding: 0 20px;
-  width: 100%;     /* занимает всю доступную ширину до max-width */
+  margin: 0 auto;
+  padding: 0 40px; /* Добавим боковые отступы */
 }
 
-/* Типографика */
-h1, h2, h3, h4, .logo, .btn {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-}
-
-.section-title {
-  font-size: 32px;
-  margin-bottom: 40px;
-  text-align: center;
-  color: #1f1f1f;
-}
-
-/* Шапка */
-.main-header {
-  background-color: #1f1f1f;
-  padding: 16px 0;
-  position: sticky;
+/* ==========================================================================
+   HEADER (ФИКСИРОВАННЫЙ, ПРЕМИАЛЬНЫЙ)
+   ========================================================================== */
+header {
+  position: fixed; /* Закрепим его сверху */
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 30px 0; /* Увеличим отступы */
+  background-color: #fff; /* Сделаем его белым */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Легкая тень */
 }
 
-.main-header .container {
+header .center {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  color: #ffffff;
-  font-size: 24px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 26px; /* Больше логотип */
+  font-weight: 700;
+  color: #1a1a1a; /* Цвет стал темным */
   text-decoration: none;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
-.main-nav {
+nav {
   display: flex;
-  gap: 32px;
+  gap: 40px; /* Просторнее меню */
 }
 
-.main-nav a {
-  color: #ffffff;
+nav a {
+  font-family: 'Raleway', sans-serif;
+  color: #1a1a1a; /* Цвет темный */
   text-decoration: none;
-  font-weight: 500;
-  transition: opacity 0.2s;
+  font-size: 16px; /* Текст крупнее */
+  font-weight: 600; /* Жирнее */
+  position: relative; /* Для эффекта подчеркивания */
 }
 
-.main-nav a:hover {
-  opacity: 0.8;
+/* Эффект плавного подчеркивания при наведении */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #9aaa97; /* Твой старый цвет для акцента */
+  transition: width 0.3s;
 }
 
-/* Hero */
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   HERO (КРУПНЕЕ, МИНИМАЛИСТИЧНЕЕ)
+   ========================================================================== */
 .hero {
-  background-image: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 70%), url('images/hero-bg.jpg');
+  position: relative;
+  min-height: 100vh; /* На весь экран */
+  /* НОВАЯ, БОЛЕЕ ЧИСТАЯ КАРТИНКА - замени ее на свою или я пришлю */
+  background-image: url('https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=2070&auto=format&fit=crop');
   background-size: cover;
   background-position: center;
-  min-height: 700px;
+  background-color: #1a1a1a;
   display: flex;
-  align-items: center;
-  color: #ffffff;
+  align-items: center; /* Текст по центру экрана */
+  margin-top: 100px; /* Отступ под фиксированный хедер */
 }
 
-/* Вложенный .container внутри hero центрирует текст */
-.hero .container {
-  text-align: center;
+/* Убираем старый градиент, делаем более чистую подложку */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Просто темный фон */
 }
 
-.hero__title {
-  font-size: 56px;
-  margin-bottom: 16px;
-  line-height: 1.2;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center; /* Всё по центру */
 }
 
-.hero__subtitle {
-  font-size: 18px;
-  margin-bottom: 32px;
-  opacity: 0.9;
+.hero h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 64px; /* НАМНОГО КРУПНЕЕ */
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  max-width: 800px; /* Чтобы не растягивался на весь экран */
+  margin: 0 auto 20px;
 }
 
-/* Кнопки */
-.btn {
+.hero-subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px; /* Крупнее */
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+/* Переделаем ссылку в полноценную кнопку */
+.hero-link {
   display: inline-block;
-  background-color: transparent;
-  border: 2px solid #b85c38;
-  color: #b85c38;
-  padding: 12px 32px;
-  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #fff;
   text-decoration: none;
-  border-radius: 40px;
+  padding: 16px 40px;
+  border: 2px solid #fff;
   transition: all 0.3s;
-  cursor: pointer;
 }
 
-.btn--primary {
-  background-color: #b85c38;
-  color: #ffffff;
-  border-color: #b85c38;
+.hero-link:hover {
+  background-color: #fff;
+  color: #1a1a1a;
 }
 
-.btn--primary:hover {
-  background-color: #9f4b2e;
-  border-color: #9f4b2e;
-}
-
-.btn--small {
-  padding: 8px 20px;
-  font-size: 14px;
-  border-width: 1px;
-}
-
-/* Преимущества */
-.features {
-  padding: 80px 0;
-  background-color: #f9f9f9;
-}
-
-.features__grid {
-  display: flex;
-  gap: 40px;
-  justify-content: center;  /* центрирует карточки по горизонтали */
-  flex-wrap: wrap;
-}
-
-.feature-item {
-  flex: 1 1 280px;
-  text-align: center;
-  padding: 20px;
-}
-
-.feature-icon {
-  font-size: 48px;
-  display: block;
-  margin-bottom: 16px;
-}
-
-.feature-item h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.feature-item p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Каталог */
+/* ==========================================================================
+   CATALOG (ОГРОМНАЯ ГРИД-СЕТКА ПО 2 ТОВАРА)
+   ========================================================================== */
 .catalog {
-  padding: 80px 0;
+  padding: 100px 0; /* Больше отступы */
 }
 
+.catalog h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px; /* Крупнее заголовок */
+  font-weight: 700;
+  margin-bottom: 60px; /* Больше отступ */
+  text-align: center;
+  color: #1a1a1a;
+}
+
+/* ПОЛНОСТЬЮ НОВАЯ СЕТКА: 2 ТОВАРА В РЯД, ОГРОМНЫЕ ФОТО */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  gap: 80px 60px; /* Огромные отступы */
 }
 
 .product-card {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем всё */
+  text-align: center;
 }
 
 .product-card img {
   width: 100%;
-  height: 220px;
+  height: auto; /* Убираем фиксированную высоту, фото на весь блок */
+  aspect-ratio: 1 / 1; /* Сделаем их квадратными, это стильно */
   object-fit: cover;
   display: block;
-}
-
-.product-card__content {
-  padding: 20px;
+  background: #f5f5f5; /* Светлый фон вместо градиента */
+  margin-bottom: 24px;
 }
 
 .product-card h3 {
-  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px; /* Крупнее */
+  font-weight: 600;
   margin-bottom: 8px;
+  color: #1a1a1a;
 }
 
 .product-card p {
-  color: #666;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  margin-bottom: 12px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  max-width: 320px; /* Ограничим ширину текста */
 }
 
-.price {
-  display: block;
+/* Добавим акцентный цвет для цены */
+.product-card .price {
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #b85c38;
-  margin-bottom: 16px;
+  color: #9aaa97; /* Акцентный цвет */
 }
 
-/* Футер */
-.main-footer {
-  background-color: #1f1f1f;
-  color: #aaaaaa;
-  padding: 60px 0 20px;
-}
-
-.footer__cols {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footer__col h4 {
-  color: #ffffff;
-  margin-bottom: 16px;
-  font-size: 16px;
-}
-
-.footer__col ul {
-  list-style: none;
-}
-
-.footer__col li {
-  margin-bottom: 8px;
-}
-
-.footer__col a {
-  color: #aaaaaa;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer__col a:hover {
-  color: #ffffff;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-}
-
-.social-links a {
-  font-size: 24px;
-  color: #aaaaaa;
-  transition: color 0.2s;
-}
-
-.social-links a:hover {
-  color: #b85c38;
-}
-
-.copyright {
+/* ==========================================================================
+   FOOTER (МИНИМАЛИСТИЧНЫЙ)
+   ========================================================================== */
+footer {
+  background-color: #1a1a1a; /* Сделаем его темным */
+  color: rgba(255, 255, 255, 0.8);
+  padding: 60px 0;
   text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #333;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .hero__title {
-    font-size: 32px;
-  }
-  .hero__subtitle {
-    font-size: 16px;
-  }
-  .hero {
-    min-height: 500px;
-  }
-  .features__grid {
-    gap: 20px;
-  }
-  .footer__cols {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .social-links {
-    justify-content: center;
-  }
 }
