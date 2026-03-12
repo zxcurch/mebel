@@ -12,10 +12,12 @@ body {
   line-height: 1.5;
 }
 
+/* Центрирующий контейнер — ядро вёрстки */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto;  /* это центрирует блок по горизонтали */
   padding: 0 20px;
+  width: 100%;     /* занимает всю доступную ширину до max-width */
 }
 
 /* Типографика */
@@ -69,23 +71,24 @@ h1, h2, h3, h4, .logo, .btn {
   opacity: 0.8;
 }
 
-/* Hero — увеличен */
+/* Hero */
 .hero {
   background-image: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 70%), url('images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 700px; /* было 500px — увеличили */
+  min-height: 700px;
   display: flex;
   align-items: center;
   color: #ffffff;
 }
 
-.hero__inner {
+/* Вложенный .container внутри hero центрирует текст */
+.hero .container {
   text-align: center;
 }
 
 .hero__title {
-  font-size: 56px; /* было 48px — сделали крупнее */
+  font-size: 56px;
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -136,7 +139,7 @@ h1, h2, h3, h4, .logo, .btn {
 .features__grid {
   display: flex;
   gap: 40px;
-  justify-content: center;
+  justify-content: center;  /* центрирует карточки по горизонтали */
   flex-wrap: wrap;
 }
 
@@ -285,7 +288,7 @@ h1, h2, h3, h4, .logo, .btn {
     font-size: 16px;
   }
   .hero {
-    min-height: 500px; /* на мобильных можно чуть уменьшить */
+    min-height: 500px;
   }
   .features__grid {
     gap: 20px;
