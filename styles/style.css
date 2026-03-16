@@ -6,7 +6,8 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  /* Montserrat добавлен первым, чтобы применяться как основной */
+  font-family: 'Montserrat', 'Roboto', sans-serif; 
   color: #000;
   line-height: 1.4;
 }
@@ -57,7 +58,7 @@ nav a {
 }
 
 .hero-content {
-  padding-top: 64px;
+  padding-top: 64px; /* Правильный отступ до контента */
 }
 
 .hero h1 {
@@ -82,7 +83,8 @@ nav a {
 
 /* --- CATALOG (Задание 3) --- */
 .catalog {
-  padding: 64px 0;
+  /* Отступ сверху изменен, проверь точное значение в Figma (возможно 72px или 80px) */
+  padding: 72px 0 64px; 
 }
 
 .catalog h2 {
@@ -92,16 +94,18 @@ nav a {
   margin-bottom: 32px;
 }
 
-/* Сетка товаров через Flexbox или Grid (Grid здесь лучше подходит под макет) */
+/* Сетка товаров переведена на Flexbox */
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 колонки как в макете */
+  display: flex;
+  flex-wrap: wrap;
   gap: 48px 32px;
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
+  /* 3 колонки с учетом gap 32px (всего 2 отступа = 64px) */
+  width: calc((100% - 64px) / 3);
 }
 
 .product-card img {
@@ -119,13 +123,13 @@ nav a {
 .product-card p {
   font-size: 16px;
   color: #888;
-  margin-bottom: 12px;
+  margin-bottom: 21px; /* Точный отступ из замечаний к макету */
 }
 
 .product-card .price {
   font-size: 24px;
   font-weight: 500;
-  margin-top: auto; /* Прижимает цену к низу, если текст разный по высоте */
+  margin-top: auto; /* Прижимает цену к низу */
 }
 
 /* --- FOOTER (Задание 4) --- */
