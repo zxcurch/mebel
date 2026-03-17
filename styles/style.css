@@ -6,29 +6,35 @@
 }
 
 body {
-  /* Montserrat добавлен первым, чтобы применяться как основной */
-  font-family: 'Montserrat', 'Roboto', sans-serif; 
+  /* Основной шрифт теперь Montserrat */
+  font-family: 'Montserrat', sans-serif;
   color: #000;
   line-height: 1.4;
 }
 
-/* Выравнивание по центру (Задание 5) */
+/* Выравнивание по центру */
 .center {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* --- HEADER (Задание 1) --- */
+/* --- HEADER --- */
 header {
   padding-top: 30px;
+}
+
+header .center {
+  /* Убираем боковые отступы у хэдера согласно замечанию */
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .header-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Линия как на макете */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5); /* Линия-разделитель */
   padding-bottom: 16px;
 }
 
@@ -47,9 +53,8 @@ nav a {
   font-size: 16px;
 }
 
-/* --- HERO SECTION (Задание 2) --- */
+/* --- HERO SECTION --- */
 .hero {
-  /* Замени images/hero-bg.jpg на путь к своей большой картинке */
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/hero-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -58,7 +63,8 @@ nav a {
 }
 
 .hero-content {
-  padding-top: 64px; /* Правильный отступ до контента */
+  /* Отступ заголовка */
+  padding-top: 64px;
 }
 
 .hero h1 {
@@ -81,10 +87,10 @@ nav a {
   text-decoration: underline;
 }
 
-/* --- CATALOG (Задание 3) --- */
+/* --- CATALOG --- */
 .catalog {
-  /* Отступ сверху изменен, проверь точное значение в Figma (возможно 72px или 80px) */
-  padding: 72px 0 64px; 
+  /* Верхний отступ секции увеличен для соответствия макету */
+  padding: 72px 0 64px;
 }
 
 .catalog h2 {
@@ -98,13 +104,13 @@ nav a {
 .products-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 48px 32px;
+  gap: 48px 32px; /* Сохраняем твои отступы */
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
-  /* 3 колонки с учетом gap 32px (всего 2 отступа = 64px) */
+  /* Ширина для 3-х колонок (100% - 2 отступа по 32px) / 3 */
   width: calc((100% - 64px) / 3);
 }
 
@@ -123,16 +129,17 @@ nav a {
 .product-card p {
   font-size: 16px;
   color: #888;
-  margin-bottom: 21px; /* Точный отступ из замечаний к макету */
+  /* Установлен отступ 21px до цены */
+  margin-bottom: 21px;
 }
 
 .product-card .price {
   font-size: 24px;
   font-weight: 500;
-  margin-top: auto; /* Прижимает цену к низу */
+  margin-top: auto;
 }
 
-/* --- FOOTER (Задание 4) --- */
+/* --- FOOTER --- */
 footer {
   background-color: #f7f7f7;
   padding: 64px 0;
